@@ -1,0 +1,45 @@
+<html>
+<body>
+STUDENT DATABASE
+<form method="post">
+rno:<input type="text" name="rno"/><br>
+name:<input type="text" name="name"/><br>
+m1:<input type="text" name="m1"/><br>
+m2:<input type="text" name="m2"/><br>
+m3:<input type="text" name="m3"/><br>
+<input type="submit" name="ok" value="ok"/>
+<input type="submit" name="print" value="print"/>
+
+</form>
+<?php
+$con=mysqli_connect("localhost","root","","db");
+if(isset($_POST['ok']))
+{
+$P=$_POST['rno'];
+$R=$_POST['name'];
+$X=$_POST['m1'];
+$Y=$_POST['m2'];
+$Z=$_POST['m3'];
+$sql=mysqli_query($con,"insert into db1(rno,name,m1,m2,m3)values('$P','$R','$X','$Y','$Z')");
+echo "data inserted";
+}
+?>
+
+<?php
+$con=mysqli_connect("localhost","root","","db");
+if(isset($_POST['print']))
+{
+$P=$_POST['rno'];
+$R=$_POST['name'];
+$X=$_POST['m1'];
+$Y=$_POST['m2'];
+$Z=$_POST['m3'];
+$sql=mysqli_query($con,"select name from db1 where (m1<40) || (m2 <40) || (m3<40)");
+echo "data printed";
+}
+?>
+
+</body>
+</html>
+
+
